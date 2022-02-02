@@ -60,7 +60,7 @@ By default, all the user password are encoded in the database, here are all the 
 
 
 Once connected, you have access to all the fonctionnality of the application, you can:
--Add new friends
--Transfer money to your friends
--Transfer money to your bank accounts
--Add new bank accounts (if they are not already join to a user)
+- Add new friends
+- Transfer money to your friends
+- Transfer money to your bank accounts
+- Add new bank accounts (if they are not already join to a user)
