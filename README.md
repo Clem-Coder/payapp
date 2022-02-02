@@ -54,9 +54,9 @@ To connect to the application, you have to enter an email address, and a passwor
 
 By default, all the user password are encoded in the database, here are all the accounts you can use with their password not encrypted : 
 
-Email: pauline.germain@gmail.com - Password: root1
-Email: pierre.pillard@gmail.com - Password: root2
-Email: anthony.diurne@gmail.com - Password: root3
+- Email: pauline.germain@gmail.com - Password: root1
+- Email: pierre.pillard@gmail.com - Password: root2
+- Email: anthony.diurne@gmail.com - Password: root3
 
 
 Once connected, you have access to all the fonctionnality of the application, you can:
