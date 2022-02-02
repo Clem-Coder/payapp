@@ -38,7 +38,7 @@ be set as rootroot. If you add another user/credentials make sure to change the 
 
 You will have to set up the tables and data in the data base. For this, please run the sql commands present in the paymybuddy.sql file.
 
-![alt text](https://github.com/Clem-Coder/payapp/blob/src/main/resources/static/images/logo.jpg?raw=true)
+![alt text](https://github.com/Clem-Coder/payapp/tree/master/src/main/resources/static/images/logo.jpg?raw=true)
 
 ### Running App
 
