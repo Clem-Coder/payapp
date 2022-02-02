@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>transfer</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="icon" href="/images/faviconeuro.ico" />
+</head>
+
+<body>
+<div class="container border border-secondary rounded">
+    <header>
+        <div >
+            <nav class="navbar navbar-expand border-bottom border-secondary">
+                <div>
+                    <img th:src="@{/images/logo2.png}" class="img-fluid col-6" alt="Responsive image" >
+                </div>
+                <ul class="navbar-nav">
+                    <li class="navbar-brand ">
+                        <a class="nav-link text-dark " th:href="@{/homepage}">Home</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-primary" th:href="@{/transferForm}">Transfer</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/profile}">Profile</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/contact}">Contact</a>
+                    </li>
+                    <form th:action="@{/logout}" method="post" class="nav-link text-dark">
+                        <input type="submit" class="nav-link text-dark" value="Log off" />
+                    </form>
+                </ul>
+            </nav>
+        </div>
+
+        <nav class="navbar navbar-expand bg-light mb-3 mt-0.5">
+            <ul class="navbar-nav">
+                <li class="navbar-brand ">
+                    <a class="nav-link text-dark " th:href="@{/homepage}">Home</a>
+                </li>
+                <li class="navbar-brand ">
+                    <a class="nav-link text-primary " >/</a>
+                </li>
+                <li class="navbar-brand">
+                    <a class="nav-link text-primary" th:href="@{/transferForm}">Transfer</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container col-10 mb-3">
+        <div class=" d-flex justify-content-between">
+            <h3 class="mb-3">Send money</h3>
+            <a type="submit" class="  btn btn-primary btn-lg col-3" th:href="@{/addConnectionForm}" > Add connection </a>
+        </div>
+        <form th:action="@{/transfer}"  method="post" class="bg-light border border-secondary rounded mb-4">
+            <div class="d-flex ">
+                <div class=" d-flex flex-column mt-4 col-9">
+                    <small class="mb-2 form-text text-warning text-center">don't forget that pay my buddy <b>take 5%</b> on all transactions</small>
+                    <div class=" d-flex mb-2  ">
+                        <div class="col-8 align-self-center text-right ">
+                            <select class="col-10 btn btn-lg border border-secondary dropdown-toggle " type="text" name="friendEmail" >
+                                <option >select a connection</option>
+                                <option th:each="friend : ${friends}"   th:value="${friend.email}" th:text="${friend.firstName} +' '+ ${friend.lastName}"></option>
+                            </select>
+                        </div>
+                        <div class="d-flex col-4">
+                            <div class=" align-self-center " >
+                                <input  name="amount" size="8" class="btn btn-lg border border-secondary text-center col-12" placeholder="0€" value="0">
+                            </div>
+                            <h2>€</h2>
+                        </div>
+                    </div>
+                    <div class="text-center  mb-5 ">
+                        <input type="text" name="comment"  size="50" class="btn btn-lg border border-secondary ml-4 col-10" placeholder="comment ...">
+                        <small id="emailHelpError" th:if="${error}" th:text="${error}" class="form-text text-danger font-weight-bold text-center"></small>
+                        <small id="emailHelpSuccess" th:if="${success}" th:text="${success}" class="form-text text-success font-weight-bold text-center "></small>
+                    </div>
+
+                </div>
+                    <div class="col-4 align-self-center" >
+                        <button type="submit" class="  btn btn-success btn-lg col-5 pt-3 pb-3 " > Pay </button>
+                    </div>
+                </div>
+        </form>
+        <div >
+            <table class="table table-striped border border-secondary" >
+                <thead class="bg-success text-center text-white">
+                <tr >
+                    <th scope="col"><br><h5>From</h5><br></th>
+                    <th scope="col"><br><h5>To</h5><br></th>
+                    <th scope="col"><br><h5>Description</h5><br></th>
+                    <th scope="col"><br><h5>Amount</h5><br></th>
+                </tr>
+                </thead>
+                <tbody class="text-center ">
+                <tr th:each="friendTransaction : ${friendTransactionPage}">
+                    <td th:if="${friendTransaction.userName} == ${user.firstName}"><br><h5 class="text-primary" > you</h5><br></td>
+                    <td th:if="${friendTransaction.userName} == ${user.firstName}"><br><h5  th:text="${friendTransaction.creditorName}"></h5><br></td>
+                    <td th:if="${friendTransaction.userName} != ${user.firstName}"><br><h5 th:text="${friendTransaction.userName}"></h5><br></td>
+                    <td th:if="${friendTransaction.userName} != ${user.firstName}" ><br><h5 class="text-primary" >you</h5><br></td>
+                    <td><br><h5 th:text="${friendTransaction.comment}"></h5><br></td>
+                    <td><br><h5 th:text="${friendTransaction.amount}"></h5><br></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <form th:action="@{/transferPage}"  method="get">
+            <nav th:if="${numberOfPage}" >
+                <ul class="pagination justify-content-center ">
+                    <li class="page-item ">
+                        <button type="submit" th:if="${friendTransactionPage.getNumber} >= 1" class="page-link" th:value="${friendTransactionPage.getNumber} -1" name="pageNumber">&laquo;</button>
+                        <a th:if="${friendTransactionPage.getNumber} == 0" class="page-link" >&laquo; </a>
+                    </li>
+                    <li class="page-item" th:each="number : ${numberOfPage}" >
+                        <button type="submit"  th:if="${number} != ${friendTransactionPage.getNumber}" class="page-link" name="pageNumber" th:value="${number}" th:text="${number}"></button>
+                        <button type="submit"  th:if="${number} == ${friendTransactionPage.getNumber}" class="page-link" name="pageNumber" th:value="${number}"><b th:text="${number}"></b> </button>
+                    <li class="page-item " >
+                        <button type="submit" th:if="${friendTransactionPage.getNumber} != ${friendTransactionPage.getTotalPages} - 1" class="page-link" th:value="${friendTransactionPage.getNumber} +1" name="pageNumber">&raquo;</button>
+                        <a th:if="${friendTransactionPage.getNumber} == ${friendTransactionPage.getTotalPages} - 1" class="page-link" >&raquo;</a>
+                    </li>
+                </ul>
+            </nav>
+        </form>
+    </div>
+</div>
+</body>
+</html>

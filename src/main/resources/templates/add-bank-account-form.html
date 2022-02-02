@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>add bank account</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="icon" href="/images/faviconeuro.ico" />
+</head>
+
+<body>
+<div class="container border border-secondary rounded">
+    <header>
+        <div >
+            <nav class="navbar navbar-expand border-bottom border-secondary">
+                <div>
+                    <img th:src="@{/images/logo2.png}" class="img-fluid col-6" alt="Responsive image" >
+                </div>
+                <ul class="navbar-nav">
+                    <li class="navbar-brand ">
+                        <a class="nav-link text-dark " th:href="@{/homepage}">Home</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/transferForm}">Transfer</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/profile}">Profile</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/contact}">Contact</a>
+                    </li>
+                    <form th:action="@{/logout}" method="post" class="nav-link text-dark">
+                        <input type="submit" class="nav-link text-dark" value="Log off" />
+                    </form>
+                </ul>
+            </nav>
+        </div>
+
+        <nav class="navbar navbar-expand bg-light mb-3 mt-0.5">
+            <ul class="navbar-nav">
+                <li class="navbar-brand ">
+                    <a class="nav-link text-dark " th:href="@{/homepage}">Home</a>
+                </li>
+                <li class="navbar-brand ">
+                    <a class="nav-link text-primary " >/</a>
+                </li>
+                <li class="navbar-brand">
+                    <a class="nav-link text-dark" th:href="@{/transferForm}">Transfer</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container col-10 mb-3">
+        <h2 class="mb-5 text-center  ">Add a new bank account</h2>
+            <div class="container bg-light border border-secondary rounded mb-3 ">
+                <br>
+                <br>
+                <div class="text-center mb-4">
+                    <img th:src="@{/images/banque.png}">
+                </div>
+                <form th:action="@{/addBankAccount}"  method="post">
+                    <div class=" text-center" >
+                        <input  type="text" name="accountNumber" class="btn btn-lg border border-secondary col-7" placeholder="FR32_XXXXX_XXXXX_XXXXXXXXXX_XX">
+                        <small th:if="${userError}" th:text="${userError}" class="form-text text-danger text-center ml-5 font-weight-bold"></small>
+                    </div>
+                <br>
+                <br>
+                <div class="text-center mb-5">
+                    <h3 class="font-weight-light mb-3"> select bank account type</h3>
+                    <select class="btn btn-lg border border-secondary" type="text" name="accountType" >
+                        <option ></option>
+                        <option >Savings account</option>
+                        <option >Fixed deposit account</option>
+                        <option >NRI accounts</option>
+                        <option >Recurring deposit account</option>
+                    </select>
+                    <small th:if="${accountTypeError}"  th:text="${accountTypeError}" class="form-text text-danger text-center font-weight-bold"></small>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class=" btn btn-success btn-lg col-3 "> Add this account </button>
+                    <small th:if="${error}" th:text="${error}" class="form-text text-danger font-weight-bold"></small>
+                    <small  th:if="${success}" th:text="${success}" class="form-text text-success font-weight-bold"></small>
+                </div>
+                </form>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class=" d-flex justify-content-around text-center bg-light " >
+                    <div class=" col-6">
+                        <a class="  btn btn-secondary btn-lg btn-block" th:href="@{/homepage}" > Back home </a>
+                    </div>
+                    <div class=" col-6">
+                        <a class=" btn btn-secondary btn-lg btn-block"  th:href="@{/transferForm}" > Pay a buddy </a>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>

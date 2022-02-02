@@ -1,0 +1,22 @@
+2022-02-02 10:31:31.118  INFO 7704 --- [main] c.p.p.i.BankTransactionControllerIT      : Starting BankTransactionControllerIT using Java 16.0.1 on Clem-PC with PID 7704 (started by Clem in C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp)
+2022-02-02 10:31:31.120  INFO 7704 --- [main] c.p.p.i.BankTransactionControllerIT      : No active profile set, falling back to default profiles: default
+2022-02-02 10:31:36.374  INFO 7704 --- [main] c.p.p.i.BankTransactionControllerIT      : Started BankTransactionControllerIT in 5.62 seconds (JVM running for 7.328)
+2022-02-02 10:33:17.278  INFO 4792 --- [main] c.p.p.i.BankAccountControllerIT          : Starting BankAccountControllerIT using Java 16.0.1 on Clem-PC with PID 4792 (started by Clem in C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp)
+2022-02-02 10:33:17.280  INFO 4792 --- [main] c.p.p.i.BankAccountControllerIT          : No active profile set, falling back to default profiles: default
+2022-02-02 10:33:24.299  INFO 4792 --- [main] c.p.p.i.BankAccountControllerIT          : Started BankAccountControllerIT in 7.592 seconds (JVM running for 10.032)
+2022-02-02 10:40:10.997  INFO 2708 --- [restartedMain] com.paymybudy.payapp.PayappApplication   : Starting PayappApplication using Java 16.0.1 on Clem-PC with PID 2708 (C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp\target\classes started by Clem in C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp)
+2022-02-02 10:40:10.999  INFO 2708 --- [restartedMain] com.paymybudy.payapp.PayappApplication   : No active profile set, falling back to default profiles: default
+2022-02-02 10:40:12.347  INFO 2708 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2022-02-02 10:40:14.391  INFO 2708 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2022-02-02 10:40:14.402  INFO 2708 --- [restartedMain] com.paymybudy.payapp.PayappApplication   : Started PayappApplication in 3.828 seconds (JVM running for 4.951)
+2022-02-02 12:17:40.355  INFO 9032 --- [restartedMain] com.paymybudy.payapp.PayappApplication   : Starting PayappApplication using Java 16.0.1 on Clem-PC with PID 9032 (C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp\target\classes started by Clem in C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp)
+2022-02-02 12:17:40.356  INFO 9032 --- [restartedMain] com.paymybudy.payapp.PayappApplication   : No active profile set, falling back to default profiles: default
+2022-02-02 12:17:41.804  INFO 9032 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9001 (http)
+2022-02-02 12:17:43.827  INFO 9032 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9001 (http) with context path ''
+2022-02-02 12:17:43.838  INFO 9032 --- [restartedMain] com.paymybudy.payapp.PayappApplication   : Started PayappApplication in 3.953 seconds (JVM running for 4.777)
+2022-02-02 12:24:24.706  INFO 3160 --- [main] c.p.payapp.tests.PayMyBuddyControllerIT  : Starting PayMyBuddyControllerIT using Java 16.0.1 on Clem-PC with PID 3160 (started by Clem in C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp)
+2022-02-02 12:24:24.708  INFO 3160 --- [main] c.p.payapp.tests.PayMyBuddyControllerIT  : No active profile set, falling back to default profiles: default
+2022-02-02 12:24:29.983  INFO 3160 --- [main] c.p.payapp.tests.PayMyBuddyControllerIT  : Started PayMyBuddyControllerIT in 5.694 seconds (JVM running for 7.959)
+2022-02-02 12:40:34.238  INFO 6868 --- [main] c.p.payapp.tests.PayMyBuddyControllerIT  : Starting PayMyBuddyControllerIT using Java 16.0.1 on Clem-PC with PID 6868 (started by Clem in C:\Users\Clem\Documents\OpenClassRooms\Projets OpenClassRooms\Projet 6\payapp)
+2022-02-02 12:40:34.240  INFO 6868 --- [main] c.p.payapp.tests.PayMyBuddyControllerIT  : No active profile set, falling back to default profiles: default
+2022-02-02 12:40:39.395  INFO 6868 --- [main] c.p.payapp.tests.PayMyBuddyControllerIT  : Started PayMyBuddyControllerIT in 5.545 seconds (JVM running for 7.554)

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="icon" href="/images/faviconeuro.ico" />
+</head>
+
+<body>
+<div class="container border border-secondary rounded">
+    <header>
+        <div >
+            <nav class="navbar navbar-expand border-bottom border-secondary">
+                <div>
+                    <img th:src="@{/images/logo2.png}" class="img-fluid col-6" alt="Responsive image" >
+                </div>
+                <ul class="navbar-nav">
+                    <li class="navbar-brand ">
+                        <a class="nav-link text-dark " th:href="@{/homepage}">Home</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/transferForm}">Transfer</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/profile}">Profile</a>
+                    </li>
+                    <li class="navbar-brand">
+                        <a class="nav-link text-dark" th:href="@{/contact}">Contact</a>
+                    </li>
+                    <form th:action="@{/logout}" method="post" class="nav-link text-dark">
+                        <input type="submit" class="nav-link text-dark" value="Log off" />
+                    </form>
+
+                </ul>
+            </nav>
+        </div>
+
+        <nav class="navbar navbar-expand bg-light mb-3 mt-0.5">
+            <ul class="navbar-nav">
+                <li class="navbar-brand ">
+                    <a class="nav-link text-dark " th:href="@{/homepage}">Home</a>
+                </li>
+                <li class="navbar-brand ">
+                    <a class="nav-link text-primary " >/</a>
+                </li>
+                <li class="navbar-brand">
+                    <a class="nav-link text-dark" th:href="@{/transferForm}">Transfer</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container col-10 mb-3">
+        <div>
+            <h3 class="text-center mb-3">Ajouter un ami</h3>
+        </div>
+        <form th:action="@{/addConnection}"  method="post">
+        <div class="d-flex justify-content-around container bg-light border  border-bottom-0 border-secondary rounded">
+            <div  class="col-7" >
+                <br>
+                <br>
+                <br>
+                <div class="input-group input-group-lg pl-5">
+                    <input  class="form-control"  type="text" name="addressMail" placeholder="buddys.email@paymybuddy.com" aria-label="Large"  aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <div th:if="${previousSearch != null}">
+                    <small  th:if="${#lists.contains(friendsEmails, '' + previousSearch)}" class="form-text text-danger font-weight-bold ml-5 text-center">You already know this buddy</small>
+                    <small  th:if="${user.getEmail} == ${previousSearch}"  class="form-text text-warning font-weight-bold ml-5 text-center">You can't add yourself in friends</small>
+                    <small  th:if="${!#lists.contains(usersEmails, '' + previousSearch)}" class="form-text text-danger font-weight-bold ml-5 text-center">Any user with this email</small>
+                    <small  th:if="${successMessage}" th:text="${successMessage}" class="form-text text-success font-weight-bold ml-5 text-center"></small>
+                </div>
+                <br>
+                <br>
+            </div>
+            <div class="col-5 pr-3" >
+                <br>
+                <br>
+                <br>
+                <button type="submit" class="btn btn-success btn-lg  " > Add this buddy </button>
+            </div>
+        </div>
+        </form>
+        <div class=" d-flex justify-content-around text-center bg-light border border-top-0 border-secondary rounded" >
+            <div class=" col-6">
+                <a class="   btn btn-secondary btn-lg btn-block" th:href="@{/homepage}"> Back home </a>
+            </div>
+            <div class=" col-6">
+                <a class="  btn btn-secondary btn-lg btn-block"  th:href="@{/transferForm}" > Pay a buddy </a>
+            </div>
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>
