@@ -38,7 +38,8 @@ be set as rootroot. If you add another user/credentials make sure to change the 
 
 You will have to set up the tables and data in the data base. For this, please run the sql commands present in the paymybuddy.sql file.
 Here is the diagram of the database : 
-![diagramme de classe UML](https://user-images.githubusercontent.com/85555120/152167417-cef0f168-b820-4c41-8978-846a955308ef.jpg)
+
+![diagramme de classe UML](https://user-images.githubusercontent.com/85555120/152170837-60c46b9f-18ef-4db1-b40c-2a6cf8df0b3d.jpg)
 
 ### Running App
 
