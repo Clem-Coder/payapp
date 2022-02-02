@@ -1,9 +1,5 @@
 # Pay My Buddy
 
-An Application Programing Interface, designed for rescue services.
-The application return datas in Json from URLs
-This app uses Java to run and stores the data in H2 database.
-
 This application is designed to help people to transfer money to their friends, and to their bank accounts
 
 ## Getting Started
