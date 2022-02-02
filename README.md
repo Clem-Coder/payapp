@@ -26,7 +26,7 @@ https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.
 
 https://maven.apache.org/install.html
 
-2.Install MySQL community:
+2.Install MySQL :
 
 https://dev.mysql.com/downloads/mysql/
 
