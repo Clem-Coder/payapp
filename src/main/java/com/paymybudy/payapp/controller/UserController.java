@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
+/**
+ * here are all the methods to show the template to add a new connection and to add a new connection,
+ * also the methods to show the user profile and to change the user password
+ */
 
 @SessionAttributes("user")
 @Controller
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class UserController {
 
-    /**
-     * here are all the methods to show the template to add a new connection and to add a new connection,
-     * also the methods to show the user profile and to change the user password
-     */
+public class UserController {
 
     private static final Logger logger = LogManager.getLogger("UserController");
 
@@ -34,7 +34,9 @@ public class UserController {
     private final PasswordEncoder passwordEncoder;
 
 
-
+    /**
+     * Show the page to add a new friend
+     */
     @GetMapping("/addConnectionForm")
     public ModelAndView addConnectionForm(@ModelAttribute("user") User user) {
         logger.info("New request: show the add-buddy template in the view");
@@ -46,6 +48,12 @@ public class UserController {
         return mav;
     }
 
+    /**
+     * @param user
+     *This method allow user add a new friend
+     * it take one parameter: an email address. If any user with this email address is registered in database, the method fails.
+     * The method can also fail if the user try to add himself in friend, or if he try to add a connexion he already know
+     */
     @PostMapping ("/addConnection")
     public ModelAndView addConnection(@RequestParam String addressMail, @ModelAttribute("user") User user) {
         logger.info("New request: the user: " + user.getEmail() + " try to add a new connection");
@@ -83,6 +91,10 @@ public class UserController {
         }
     }
 
+    /**
+     * Show the page with the profile of the user
+     */
+
     @GetMapping("/profile")
     public ModelAndView profilForm(@ModelAttribute("user") User user) {
         logger.info("New request: show the profile-form template in the view");
@@ -90,6 +102,9 @@ public class UserController {
         return mav;
     }
 
+    /**
+     * Show the page to change the user password
+     */
     @GetMapping("/changePasswordForm")
     public ModelAndView changePasswordForm(@ModelAttribute("user") User user) {
         logger.info("New request: show the change-password-form template in the view");
@@ -97,6 +112,10 @@ public class UserController {
         return mav;
     }
 
+    /**
+     *This method allow user to change there password
+     * the user have to enter the same password two time. if both password entered are not the same, the method failed,
+     */
     @PostMapping("/changePassword")
     public ModelAndView changePassword(@ModelAttribute("user") User user, @RequestParam String password, @RequestParam String confirmPassword) {
         logger.info("New request: the user: " + user.getEmail() + " try change his password");
@@ -124,6 +143,7 @@ public class UserController {
             return mav;
         }
     }
+
 }
 
 

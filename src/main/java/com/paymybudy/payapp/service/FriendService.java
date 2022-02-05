@@ -8,17 +8,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * here are all the methods use to manipulate (Create,read, update & delete) datas from Friend table
+ */
+
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class FriendService {
-
-    /**
-     * here are all the methods use to manipulate (Create,read, update & delete) datas from Friend table
-     */
 
     private static final Logger logger = LogManager.getLogger("FriendService");
 
@@ -26,16 +27,28 @@ public class FriendService {
 
     private final FriendRepository friendRepository;
 
+    /**
+     * This method the user friend list. Need a user in parameter to work.
+     */
+    @Transactional(readOnly = true)
     public List<Friend> getUserFriendsList(User user) {
         logger.info("New request: get the friend list of the user: " + user.getEmail());
         return friendRepository.findByUser(user);
     }
 
+
+    /**
+     * Save a new bank transaction in database
+     */
+    @Transactional
     public void saveFriend (Friend friend){
         logger.info("Add a new friend: " + friend.getEmail() + " in database");
         friendRepository.save(friend);
     }
 
+    /**
+     * This method will give a list of email. Need a list of friend to work
+     */
     public List<String> getFriendsEmails(List<Friend> friends){
         logger.info("New request: get friends email by a friend list");
         List<String> friendsEmails = new ArrayList<>();
@@ -45,6 +58,10 @@ public class FriendService {
         return friendsEmails;
     }
 
+    /**
+     * This method will create and return a friend. Need an email address and a user in parameter to work
+     */
+    @Transactional(readOnly = true)
     public Friend createFriendByEmail(String emailAddress, User user) {
         logger.info("create a new friend: " + emailAddress + ", for the user " + user.getEmail());
         Friend friend = new Friend();

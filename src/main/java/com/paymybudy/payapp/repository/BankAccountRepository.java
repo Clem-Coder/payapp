@@ -7,11 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface BankAccountRepository extends CrudRepository<BankAccount, String> {
+/**
+ * here are all the methods used to access and manipulate datas in BankAccount table
+ */
 
-    /**
-     * here are all the methods used to access and manipulate datas in BankAccount table
-     */
+public interface BankAccountRepository extends CrudRepository<BankAccount, String> {
 
     List<BankAccount> getBankAccountByUser(User user);
 

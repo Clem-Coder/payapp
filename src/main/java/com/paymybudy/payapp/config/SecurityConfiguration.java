@@ -15,13 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.sql.DataSource;
 
+/**
+ * here is the configuration of Spring Security
+ */
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-
-    /**
-     * here is the configuration of Spring Security
-     */
 
     @Autowired
     DataSource dataSource;
@@ -42,7 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers(staticResources).permitAll()
+                .antMatchers(staticResources).permitAll().antMatchers("/registrationForm", "/registration").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()

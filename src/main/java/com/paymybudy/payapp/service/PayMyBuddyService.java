@@ -6,12 +6,12 @@ import org.springframework.stereotype.Service;
 
 import static com.paymybudy.payapp.constants.Constants.PAY_MY_BUDDY_COMMISSION;
 
+/**
+ * here is the method to allow pay my buddy to take a 5% commission on all friend transaction
+ */
+
 @Service
 public class PayMyBuddyService {
-
-    /**
-     * here is the method to allow pay my buddy to take a 5% commission on all friend transaction
-     */
 
     private static final Logger logger = LogManager.getLogger("PayMyBuddyService");
 

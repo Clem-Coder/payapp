@@ -14,19 +14,24 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * here are all the methods to show the template to add a new bank account and to add a new bank account
+ */
+
 @SessionAttributes("user")
 @Controller
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class BankAccountController {
 
-    /**
-     * here are all the methods to show the template to add a new bank account and to add a new bank account
-     */
 
     private final BankAccountService bankAccountService;
 
     private static final Logger logger = LogManager.getLogger("BankAccountController");
 
+    /**
+     * @param user
+     * Show the template to add a new bank account
+     */
     @GetMapping("/addBankAccountForm")
     public ModelAndView addBankAccountForm(@ModelAttribute("user") User user) {
         logger.info("New request: show the add-band-account template in the view ");
@@ -35,6 +40,12 @@ public class BankAccountController {
         return mav;
     }
 
+    /**
+     * @param user
+     *This method allow user to add new bank accounts
+     *it takes two parameters : An account number and an account type.
+     * If one of them is missing, the method failed.
+     */
     @PostMapping ("/addBankAccount")
     public ModelAndView addBankAccount(@ModelAttribute("user") User user, @RequestParam String accountNumber, @RequestParam String accountType) {
         logger.info("New request: add a new bank account: " + accountNumber + "to the user: " + user.getEmail());

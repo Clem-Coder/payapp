@@ -14,17 +14,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * here are all the methods to  show the bank transfer page and to do a new bank transfer
+ */
 
 @SessionAttributes("user")
 @Controller
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class BankTransactionController {
-
-    /**
-     * here are all the methods to  show the bank transfer page and to do a new bank transfer
-     */
 
     private static final Logger logger = LogManager.getLogger("BankTransactionController");
 
@@ -34,6 +34,10 @@ public class BankTransactionController {
 
     private final BankTransactionService bankTransactionService;
 
+    /**
+     * @param user
+     * Show the template to transfer money to a bank account
+     */
     @GetMapping("/bankTransferForm")
     public ModelAndView bankTransferForm(@ModelAttribute("user") User user) {
         logger.info("New request: show the bank-transfer-form template in the view ");
@@ -43,7 +47,15 @@ public class BankTransactionController {
         return mav;
     }
 
+
+    /**
+     * @param user
+     *This method allow user to transfer money to or from there bank accounts
+     *it takes three parameters : An amount, an account type and a transfer type.
+     * If one of them is missing, the method failed.
+     */
     @PostMapping("/bankTransfer")
+    @Transactional
     public ModelAndView bankTransfer(@ModelAttribute("user") User user, @RequestParam double amount, @RequestParam String accountType, @RequestParam String transferType) {
         logger.info("New bank transfer");
         ModelAndView mav = new ModelAndView("bank-transfer-form");

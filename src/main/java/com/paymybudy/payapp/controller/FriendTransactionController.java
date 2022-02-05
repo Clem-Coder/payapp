@@ -17,16 +17,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.transaction.Transactional;
 import java.util.List;
+
+/**
+ * here are all the methods to show the friend transfer page, to transfer money to a friend and to use the pagination system in the friend transfer template
+ */
 
 @SessionAttributes("user")
 @Controller
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class FriendTransactionController {
-
-    /**
-     * here are all the methods to show the friend transfer page, to transfer money to a friend and to use the pagination system in the friend transfer template
-     */
 
     private static final Logger logger = LogManager.getLogger("FriendTransactionController");
 
@@ -35,6 +36,10 @@ public class FriendTransactionController {
     private final FriendTransactionService friendTransactionService;
 
 
+    /**
+     * @param user
+     * Show the template to transfer money to a friend
+     */
     @GetMapping("/transferForm")
     public ModelAndView transferForm(@ModelAttribute("user") User user) {
         logger.info("New request: show the transfer-form template in the view ");
@@ -49,6 +54,10 @@ public class FriendTransactionController {
         }   return mav;
     }
 
+    /**
+     * @param user
+     * This method use the pagination system of the friend transfer template
+     */
     @GetMapping("/transferPage")
     public ModelAndView transferForm(@ModelAttribute("user") User user, @RequestParam("pageNumber") int pageNumber) {
         logger.info("New request: use the pagination system of the transfer-form template, show the page number: " + pageNumber);
@@ -63,6 +72,14 @@ public class FriendTransactionController {
         }   return mav;
     }
 
+
+    /**
+     * @param user
+     *This method allow user to transfer money to or from there bank accounts
+     *it takes three parameters : An amount, a friend email and a comment.
+     * If the comment is missing, the method will work, but if one of the others parameters
+     * is missing, the method failed.
+     */
     @PostMapping("/transfer")
     public ModelAndView transfer(@ModelAttribute("user") User user, @RequestParam String friendEmail, @RequestParam  double amount, @RequestParam String comment) {
         logger.info("New transfer from: " + user.getEmail() + ", to: " + friendEmail);

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html" >
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="icon" href="/images/faviconeuro.ico" />
+</head>
+<body >
+<br>
+<br>
+<div class="container col-3 mt- border border-secondary rounded">
+
+    <img th:src="@{/images/logo2.png}" class="img-fluid mb-3 " alt="Responsive image" >
+
+        <h5 th:if="${created}" th:text="${created}" class="text-center text-success mb-3"></h5>
+        <h5 th:if="${deleted}" th:text="${deleted}" class="text-center text-success mb-3"></h5>
+
+        <div class="text-center">
+            <a type="submit" class="mb-5 btn btn-primary col-4  " th:href="@{/login}"> <h6>Go to login page</h6> </a>
+        </div>
+
+</div>
+</body>
+
+</html>
