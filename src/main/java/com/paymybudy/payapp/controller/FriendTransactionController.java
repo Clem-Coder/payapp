@@ -37,8 +37,10 @@ public class FriendTransactionController {
 
 
     /**
-     * @param user
      * Show the template to transfer money to a friend
+     *
+     * @param user the logged user
+     * @return the friend transfer template
      */
     @GetMapping("/transferForm")
     public ModelAndView transferForm(@ModelAttribute("user") User user) {
@@ -55,8 +57,11 @@ public class FriendTransactionController {
     }
 
     /**
-     * @param user
      * This method use the pagination system of the friend transfer template
+     *
+     * @param user the logged user
+     * @param pageNumber the page to show in the transaction history
+     * @return the friend transfer template
      */
     @GetMapping("/transferPage")
     public ModelAndView transferForm(@ModelAttribute("user") User user, @RequestParam("pageNumber") int pageNumber) {
@@ -74,11 +79,16 @@ public class FriendTransactionController {
 
 
     /**
-     * @param user
      *This method allow user to transfer money to or from there bank accounts
      *it takes three parameters : An amount, a friend email and a comment.
      * If the comment is missing, the method will work, but if one of the others parameters
      * is missing, the method failed.
+     *
+     * @param user the logged user
+     * @param friendEmail the user email who will receive the money
+     * @param amount the amount of the transaction
+     * @param comment a comment to describe the transaction
+     * @return the friend transfer template
      */
     @PostMapping("/transfer")
     public ModelAndView transfer(@ModelAttribute("user") User user, @RequestParam String friendEmail, @RequestParam  double amount, @RequestParam String comment) {

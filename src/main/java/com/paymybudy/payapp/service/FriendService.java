@@ -29,6 +29,9 @@ public class FriendService {
 
     /**
      * This method the user friend list. Need a user in parameter to work.
+     *
+     * @param  user the logged user
+     * @return a list of all the logged user friends
      */
     @Transactional(readOnly = true)
     public List<Friend> getUserFriendsList(User user) {
@@ -39,6 +42,8 @@ public class FriendService {
 
     /**
      * Save a new bank transaction in database
+     *
+     * @param friend the friend to save in database
      */
     @Transactional
     public void saveFriend (Friend friend){
@@ -48,6 +53,9 @@ public class FriendService {
 
     /**
      * This method will give a list of email. Need a list of friend to work
+     *
+     * @param friends all the friends of the logged user
+     * @return a list of all emails in the friends list
      */
     public List<String> getFriendsEmails(List<Friend> friends){
         logger.info("New request: get friends email by a friend list");
@@ -60,6 +68,10 @@ public class FriendService {
 
     /**
      * This method will create and return a friend. Need an email address and a user in parameter to work
+     *
+     * @param user the logged user
+     * @param emailAddress the email of the friend that the logged user wanna added
+     * @return a new friend
      */
     @Transactional(readOnly = true)
     public Friend createFriendByEmail(String emailAddress, User user) {

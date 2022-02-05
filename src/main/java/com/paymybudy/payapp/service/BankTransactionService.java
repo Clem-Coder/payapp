@@ -26,6 +26,8 @@ public class BankTransactionService {
 
     /**
      * Save a new bank transaction in database
+     *
+     * @param bankTransaction the bankTransaction to save in database
      */
     @Transactional
     public void saveBankTransaction(BankTransaction bankTransaction){
@@ -35,9 +37,14 @@ public class BankTransactionService {
 
 
     /**
-     * @param user
      *This method will create and return a new bank transaction
      *it takes three parameters : An amount, a transfer type and an account id.
+     *
+     * @param user the logged user
+     * @param amount the amount of the new bank transaction
+     * @param transferType the type of transfer (from pay my buddy to bank, or from bank to pay my buddy)
+     * @param accountId the id of the bank account
+     * @return a new bankTransaction
      */
     public BankTransaction newBankTransaction (User user, double amount, String transferType, String accountId) {
         logger.info("Create new bank transaction: Debtor: " + user.getEmail() + ", amount: " + amount + ", transfer type: " + transferType + ", account id: " + accountId);

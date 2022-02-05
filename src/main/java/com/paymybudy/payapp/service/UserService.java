@@ -33,7 +33,11 @@ public class UserService {
 
     /**
      * This method save a user in database
+     *
+     * @param user the user to save in database
      */
+
+
     @Transactional
     public void saveUser(User user){
         userRepository.save(user);
@@ -42,6 +46,8 @@ public class UserService {
 
     /**
      * This method return a list of all users in database
+     *
+     * @return a list of users
      */
     @Transactional(readOnly = true)
     public List<User> getUsers(){
@@ -51,6 +57,9 @@ public class UserService {
 
     /**
      * This method find and return a user in database by using an email address
+     *
+     * @param email the email address of the user to search in database
+     * @return a list of users
      */
     @Transactional(readOnly = true)
     public List<User> findByEmail(String email){
@@ -60,6 +69,9 @@ public class UserService {
 
     /**
      * This method will subtract money from the user balance
+     *
+     * @param user the user whose money will be subtracted
+     * @param amount the amount of money who'll be subtracted
      */
     @Transactional
     public void subtractMoney (User user, double amount){
@@ -72,6 +84,9 @@ public class UserService {
 
     /**
      * This method will add money in the user balance
+     *
+     *  @param user the user whose money will be added
+     *  @param amount the amount of money who'll be added
      */
     @Transactional
     public void addMoney (User user, double amount){
@@ -85,6 +100,9 @@ public class UserService {
 
     /**
      * This method return the email address of the logged user, and find this user in db
+     *
+     * @param httpServletRequest contain all the information about the logged user (email and password)
+     * @return the logged user
      */
     @Transactional(readOnly = true)
     public User getLoggedUser(HttpServletRequest httpServletRequest){
@@ -99,6 +117,8 @@ public class UserService {
 
     /**
      * This method return the email of all users in database
+     *
+     * @return a list of users emails
      */
     @Transactional(readOnly = true)
     public List<String> getUsersEmail(){

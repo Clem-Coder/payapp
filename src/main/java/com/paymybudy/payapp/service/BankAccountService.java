@@ -27,7 +27,11 @@ public class BankAccountService {
 
     /**
      * Get all the user bank account
+     *
+     * @param user the logged user
+     * @return a list of all the user bank accounts
      */
+
     @Transactional(readOnly = true)
     public List<BankAccount> getUserBankAccounts(User user){
         logger.info("New request: get bank accounts of the user: " + user.getEmail());
@@ -36,6 +40,11 @@ public class BankAccountService {
 
     /**
      * get a bank account of the user
+     *
+     * @param user the logged user
+     * @param accountType the type of the bank account (Savings account, Fixed deposit account, NRI accounts,Recurring deposit account)
+     *
+     * @return a bank account with the type in parameter
      */
     @Transactional(readOnly = true)
     public BankAccount getUserBankAccount(User user, String accountType){
@@ -45,6 +54,9 @@ public class BankAccountService {
 
     /**
      * Tranfer money from the app to a bank account
+     *
+     * @param bankAccount the bank account of the logged user where the money will be added
+     * @param amount the amount of the transfer
      */
     @Transactional
     public void bankTransfer(BankAccount bankAccount, double amount){
@@ -56,6 +68,9 @@ public class BankAccountService {
 
     /**
      * Tranfer money from a bank account to the app
+     *
+     *  @param bankAccount the bank account of the logged user where the money will be subtracted
+     *  @param amount the amount of the transfer
      */
     @Transactional
     public void accountTransfer(BankAccount bankAccount, double amount){
@@ -67,6 +82,8 @@ public class BankAccountService {
 
     /**
      * Save a bank account in database
+     *
+     * @param bankAccount the bank account who will be save in database
      */
     @Transactional
     public void saveBankAccount(BankAccount bankAccount){
@@ -76,6 +93,9 @@ public class BankAccountService {
 
     /**
      * find a bank account in db by account number
+     *
+     * @param accountNumber the account id search in database
+     * @return a list of bank account find in database
      */
     @Transactional(readOnly = true)
     public List<BankAccount> getBankAccountByAccountNumber(String accountNumber){

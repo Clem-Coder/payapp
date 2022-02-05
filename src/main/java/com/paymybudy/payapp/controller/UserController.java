@@ -36,6 +36,9 @@ public class UserController {
 
     /**
      * Show the page to add a new friend
+     *
+     * @param user the logged user
+     * @return the add connection (add-buddy) template
      */
     @GetMapping("/addConnectionForm")
     public ModelAndView addConnectionForm(@ModelAttribute("user") User user) {
@@ -49,10 +52,13 @@ public class UserController {
     }
 
     /**
-     * @param user
      *This method allow user add a new friend
      * it take one parameter: an email address. If any user with this email address is registered in database, the method fails.
      * The method can also fail if the user try to add himself in friend, or if he try to add a connexion he already know
+     *
+     * @param user the logged user
+     * @param addressMail the email address of the friend
+     * @return the add connection (add-buddy) template
      */
     @PostMapping ("/addConnection")
     public ModelAndView addConnection(@RequestParam String addressMail, @ModelAttribute("user") User user) {
@@ -93,6 +99,9 @@ public class UserController {
 
     /**
      * Show the page with the profile of the user
+     *
+     * @param user the logged user
+     * @return  the profile page
      */
 
     @GetMapping("/profile")
@@ -104,6 +113,9 @@ public class UserController {
 
     /**
      * Show the page to change the user password
+     *
+     * @param user the logged user
+     * @return the change password template
      */
     @GetMapping("/changePasswordForm")
     public ModelAndView changePasswordForm(@ModelAttribute("user") User user) {
@@ -115,6 +127,11 @@ public class UserController {
     /**
      *This method allow user to change there password
      * the user have to enter the same password two time. if both password entered are not the same, the method failed,
+     *
+     * @param user the logged user
+     * @param password the new password of the logged user
+     * @param confirmPassword the confirmPassword of the new user (have to be exactly the same as the password)
+     * @return the change password template
      */
     @PostMapping("/changePassword")
     public ModelAndView changePassword(@ModelAttribute("user") User user, @RequestParam String password, @RequestParam String confirmPassword) {

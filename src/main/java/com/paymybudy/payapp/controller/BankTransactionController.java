@@ -35,8 +35,10 @@ public class BankTransactionController {
     private final BankTransactionService bankTransactionService;
 
     /**
-     * @param user
      * Show the template to transfer money to a bank account
+     *
+     * @param user the logged user
+     * @return the bank transfer template
      */
     @GetMapping("/bankTransferForm")
     public ModelAndView bankTransferForm(@ModelAttribute("user") User user) {
@@ -47,12 +49,18 @@ public class BankTransactionController {
         return mav;
     }
 
-
     /**
-     * @param user
+     *
      *This method allow user to transfer money to or from there bank accounts
      *it takes three parameters : An amount, an account type and a transfer type.
      * If one of them is missing, the method failed.
+     *
+     *
+     * @param user the logged user
+     * @param amount the amount of the transfer
+     * @param accountType the type of the bank account (Savings account, Fixed deposit account, NRI accounts,Recurring deposit account)
+     * @param transferType the type of transfer (from pay my buddy to bank, or from bank to pay my buddy)
+     * @return the bank transfer template
      */
     @PostMapping("/bankTransfer")
     @Transactional

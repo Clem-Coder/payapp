@@ -15,6 +15,13 @@ public class PayMyBuddyService {
 
     private static final Logger logger = LogManager.getLogger("PayMyBuddyService");
 
+
+    /**
+     * this method allow pay my buddy to take a 5% commission on all friend transaction
+     *
+     * @param transactionAmount the amount of the transaction
+     * @return the transaction amount with 5% less
+     */
     public double takeTransactionCommission(double transactionAmount){
         double commission = transactionAmount * PAY_MY_BUDDY_COMMISSION;
         logger.info("Commission for pay my buddy: " + commission);

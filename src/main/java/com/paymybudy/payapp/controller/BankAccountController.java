@@ -29,8 +29,10 @@ public class BankAccountController {
     private static final Logger logger = LogManager.getLogger("BankAccountController");
 
     /**
-     * @param user
      * Show the template to add a new bank account
+     *
+     * @param user the logged user
+     * @return the add bank account template
      */
     @GetMapping("/addBankAccountForm")
     public ModelAndView addBankAccountForm(@ModelAttribute("user") User user) {
@@ -41,11 +43,15 @@ public class BankAccountController {
     }
 
     /**
-     * @param user
      *This method allow user to add new bank accounts
      *it takes two parameters : An account number and an account type.
      * If one of them is missing, the method failed.
-     */
+     *
+     * @param user the logged user
+     * @param accountNumber the account id who'll be joint to the user
+     * @param accountType the type of the bank account (Savings account, Fixed deposit account, NRI accounts,Recurring deposit account)
+     * @return the add bank account template
+     * */
     @PostMapping ("/addBankAccount")
     public ModelAndView addBankAccount(@ModelAttribute("user") User user, @RequestParam String accountNumber, @RequestParam String accountType) {
         logger.info("New request: add a new bank account: " + accountNumber + "to the user: " + user.getEmail());

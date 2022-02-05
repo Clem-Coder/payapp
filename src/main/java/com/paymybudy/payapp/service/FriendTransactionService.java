@@ -36,6 +36,11 @@ public class FriendTransactionService {
 
     /**
      * This method will return a page of friend transactions
+     *
+     * @param user the logged user
+     * @param creditorId the id of the user who receive the money of the transaction
+     * @param pageable allows to display only 3 transactions by pages
+     * @return  a page with 3 transactions
      */
     @Transactional(readOnly = true)
     public Page<FriendTransaction> getFriendTransactionsPage(User user, int creditorId, Pageable pageable){
@@ -45,6 +50,8 @@ public class FriendTransactionService {
 
     /**
      * This method save a new friend transaction in database
+     *
+     * @param friendTransaction the friendTransaction to sava in database
      */
     @Transactional
     public void saveFriendTransactions(FriendTransaction friendTransaction){
@@ -54,6 +61,9 @@ public class FriendTransactionService {
 
     /**
      * This method will give the number of friend transaction page
+     *
+     * @param friendTransactionPage the list of page of the logged user transactions
+     * @return a list of integer who contain the number of friend transcations page
      */
     public List<Integer> getNumberOfPages(Page<FriendTransaction> friendTransactionPage){
         logger.info("New request: get the number of page for the friend transaction historical ");
@@ -65,6 +75,12 @@ public class FriendTransactionService {
 
     /**
      * This method will create and return a new friend transaction
+     *
+     * @param user the logged user
+     * @param friendEmail the email address of the user who will receive the money of the transaction
+     * @param amount the amount of the transaction
+     * @param comment a description, reason of the transaction
+     * @return a new friendTransaction
      */
     @Transactional
     public FriendTransaction newFriendTransaction(User user, String friendEmail, double amount, String comment) {

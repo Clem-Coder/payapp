@@ -33,6 +33,8 @@ public class PayMyBuddyController {
 
     /**
      * Show the login page
+     *
+     * @return the login template
      */
     @GetMapping("/login")
     public ModelAndView accessForm(){
@@ -43,6 +45,9 @@ public class PayMyBuddyController {
 
     /**
      * Show the homepage
+     *
+     * @param httpServletRequest contain all the information about the logged user (email and password)
+     * @return the homepage template
      */
     @GetMapping({"/","/homepage"})
     public ModelAndView homepageForm(HttpServletRequest httpServletRequest){
@@ -55,6 +60,8 @@ public class PayMyBuddyController {
 
     /**
      * Show the contact page
+     *
+     * @return the contact template
      */
     @GetMapping("/contact")
     public ModelAndView contact(){

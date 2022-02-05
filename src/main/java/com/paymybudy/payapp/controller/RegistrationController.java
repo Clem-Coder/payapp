@@ -24,6 +24,8 @@ public class RegistrationController {
 
     /**
      * Show the registration page
+     *
+     * @return the registration template
      */
     @GetMapping("/registrationForm")
     public ModelAndView signUpForm(){
@@ -38,6 +40,14 @@ public class RegistrationController {
      * The new user have to enter all those informations about him : firsname, lastname, email and password.
      * he also have to enter the same password two time. if both password entered are not the same, the method failed,
      * and if one of the information is missing, the method failed.
+     *
+     * @param firstName the firstname of the new user
+     * @param lastName the lastName of the new user
+     * @param email the email of the new user
+     * @param password  the password of the new user
+     * @param confirmPassword the confirmPassword of the new user (have to be exactly the same as the password)
+     * @param role the role of the new user (in this case the role will always be "user")
+     * @param enabled boolean value: 1 if the user is enabled, 0 if he is not (in this case, the user will always be anabled)
      */
     @PostMapping("/registration")
     public ModelAndView signUp(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String email,
